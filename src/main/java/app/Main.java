@@ -1,5 +1,6 @@
 package app;
 
+import controller.EditCarPropertyController;
 import controller.LogInController;
 import database.ConnectToDatabase;
 import javafx.application.Application;
@@ -25,7 +26,6 @@ public class Main extends Application {
 		LogInController logInController = new LogInController();
 		loader.setController(logInController);
 		Scene scene = new Scene((Pane)loader.load());
-
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();

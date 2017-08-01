@@ -25,29 +25,80 @@ public class Customer {
 
 
 
-	public SimpleStringProperty getName() {
+	public SimpleStringProperty getNameProperty() {
 		return name;
 	}
 
-	public SimpleStringProperty getSurname() {
+	public SimpleStringProperty getSurnameProperty() {
 		return surname;
 	}
 
-	public SimpleStringProperty getCity() {
+	public SimpleStringProperty getCityProperty() {
 		return city;
 	}
 
-	public SimpleStringProperty getPostCode() {
+	public SimpleStringProperty getPostCodeProperty() {
 		return postCode;
 	}
 
-	public SimpleStringProperty getStreet() {
+	public SimpleStringProperty getStreetProperty() {
 		return street;
 	}
 
-	public SimpleStringProperty getLocalNumber() {
+	public SimpleStringProperty getLocalNumberProperty() {
 		return localNumber;
 	}
+	public String getName()
+	{
+		return name.get();
+	}
+	public String getCity()
+	{
+		return city.get();
+	}
+	public String getSurname()
+	{
+		return surname.get();
+	}
+	public String getLocalNumber()
+	{
+		return localNumber.get();
+	}
+	public String getStreet()
+	{
+		return street.get();
+	}
+	public String getPostCode()
+	{
+		return postCode.get();
+	}
+
+	public void setName(String name) {
+		this.name.setValue(name);
+	}
+
+	public void setSurname(String surname) {
+		this.surname.setValue(surname);
+	}
+
+	public void setCity(String city) {
+		this.city.setValue(city);
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode.setValue(postCode);
+	}
+
+	public void setStreet(String street) {
+		this.street.setValue(street);
+	}
+
+	public void setLocalNumber(String localNumber) {
+		this.localNumber.setValue(localNumber);
+	}
+	
+	
+	
 	
 	
 

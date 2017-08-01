@@ -51,6 +51,8 @@ public class EditCarPropertyController {
 	    	selectedItem.setYearOfProduction(yearOfProductionDatePicker.getValue().toString());
 	    	selectedItem.setPower(Integer.parseInt(powerChoiceBox.getText()));
 	    	selectedItem.setAvailable(whichIsSelected(availableChoiceBox));
+	    	Button button = (Button)event.getSource();
+	    	button.getScene().getWindow().hide();
 
 	    }
 	    

@@ -15,17 +15,17 @@ import javafx.stage.Stage;
 public class EditButtonsFromListFunctuality 
 {
 	
-/*	public <T> void addListenerToButton(Button button, String path, T interfaceInstance)
+/*	public <T extends TableViewFillModelInterfance<T>> void addListenerToButton(Button button, String path, T interfaceInstance)
 	{
 		button.addEventFilter(MouseEvent.MOUSE_CLICKED, e->{
     		FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
     		Stage stage = new Stage();
 
-    		CarTableView carTableViewItem = findProperObjectInTableView(interfaceInstance,button);
+    		TableViewFillModelInterfance<T> properObject = findProperObjectInTableView(interfaceInstance,button);
     		try {
     			EditCarPropertyController editCarPropertyController = new EditCarPropertyController();
     			loader.setController(editCarPropertyController);
-    			editCarPropertyController.passSelectedItem(carTableViewItem);
+    			editCarPropertyController.passSelectedItem(properObject);
 				Scene scene = new Scene((Pane)loader.load());
 				stage.setScene(scene);
 				stage.show();
