@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1313.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tableView" prefHeight="708.0" prefWidth="1313.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="brandColumn" prefWidth="197.99996948242188" text="Brand" />
+          <TableColumn fx:id="engineColumn" prefWidth="206.0" text="Engine" />
+            <TableColumn fx:id="dateOfProductionColumn" prefWidth="220.0" text="Date of production" />
+            <TableColumn fx:id="naviColumn" prefWidth="111.0" text="Navi" />
+            <TableColumn fx:id="availableColumn" prefWidth="208.0" text="Available" />
+            <TableColumn fx:id="powerColumn" prefWidth="164.0" text="Power" />
+            <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="205.0" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
+

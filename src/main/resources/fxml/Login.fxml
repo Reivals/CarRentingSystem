@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-12.0" prefHeight="200.0" prefWidth="1038.0" styleClass="upperAnchorPane" stylesheets="@../css/loginCSS.css" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="439.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loginIcon.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="userTextField" layoutX="319.0" layoutY="326.0" prefHeight="29.0" prefWidth="401.0" promptText="User">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="passwordTextField" layoutX="319.0" layoutY="408.0" prefHeight="29.0" prefWidth="401.0" promptText="Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton fx:id="logInButton"  onAction="#acceptButtonClicked" buttonType="RAISED" defaultButton="true" layoutX="420.0" layoutY="518.0" prefHeight="87.0" prefWidth="200.0" ripplerFill="BLACK" styleClass="logInButton" stylesheets="@../css/loginCSS.css" text="Log In">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
