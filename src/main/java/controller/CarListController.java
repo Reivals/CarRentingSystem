@@ -15,9 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.CarTableView;
+import model.ControllerInterface;
 import model.EditButtonsFromListFunctuality;
 
-public class CarListController {
+public class CarListController{
 	
 	private CarTableView carTableViewModel;
 	
@@ -55,8 +56,9 @@ public class CarListController {
 		carTableViewModel.getObservableList().addAll(new CarTableView("FIAT","d","12.08.2017",true,true,120,new Button("Edit")),new CarTableView("BMW","d","30.08.2017",true,true,120,new Button("Edit")));
     	for(CarTableView car : carTableViewModel.getObservableList()) // iteracja po liscie 
     	{
-    		addListenerToButton(car.getActionButton()); // dodanie do kazdego buttona listenera (w kolumnie Action)
-    	}
+    		EditButtonsFromListFunctuality.addListenerToButton(car.getActionButton(),"/fxml/EditCarProperty.fxml",carTableViewModel);
+    		
+   	}
     	tableView.setItems(carTableViewModel.getObservableList());
     	brandColumn.setCellValueFactory(cellData->cellData.getValue().getBrandProperty());
     	engineColumn.setCellValueFactory(cellData->cellData.getValue().getEngineProperty());
@@ -75,7 +77,7 @@ public class CarListController {
 
     		CarTableView carTableViewItem = EditButtonsFromListFunctuality.findProperObjectInTableView(carTableViewModel,button);
     		try {
-    			EditCarPropertyController editCarPropertyController = new EditCarPropertyController();
+    			EditCarPropertyController editCarPropertyController = new EditCarPropertyController(carTableViewModel);
     			loader.setController(editCarPropertyController);
     			editCarPropertyController.passSelectedItem(carTableViewItem);
 				Scene scene = new Scene((Pane)loader.load());

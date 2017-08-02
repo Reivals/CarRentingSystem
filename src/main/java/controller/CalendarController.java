@@ -8,8 +8,9 @@ import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import model.ControllerInterface;
 
-public class CalendarController {
+public class CalendarController{
 	
 
 

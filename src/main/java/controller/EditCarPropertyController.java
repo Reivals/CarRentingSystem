@@ -15,9 +15,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.GridPane;
 import model.CarTableView;
+import model.ControllerInterface;
+import model.TableViewFillModelInterfance;
 
-public class EditCarPropertyController {
-	
+public class EditCarPropertyController implements ControllerInterface{
+		CarTableView model;
 		CarTableView selectedItem;
 	 	@FXML
 	    private GridPane gridPane;
@@ -43,7 +45,15 @@ public class EditCarPropertyController {
 	    @FXML
 	    private JFXTextField powerChoiceBox;
 
-	    @FXML
+	    public EditCarPropertyController(CarTableView interfaceInstance) {
+			model = interfaceInstance;
+		}
+
+		public EditCarPropertyController(EditCarPropertyController interfaceInstance) {
+			// TODO Auto-generated constructor stub
+		}
+
+		@FXML
 	    void acceptButtonClicked(ActionEvent event) {
 	    	selectedItem.setBrand(brandTextField.getText());
 	    	selectedItem.setEngine(engineTextField.getText());
@@ -85,10 +95,6 @@ public class EditCarPropertyController {
 	    	naviChoiceBox.getSelectionModel().select(whichToSelect(selectedItem));
 	    }
 
-		public void passSelectedItem(CarTableView carTableViewItem) {
-			selectedItem = carTableViewItem;
-			
-		}
 		
 		public int whichToSelect(CarTableView selectedItem)
 		{
@@ -111,6 +117,12 @@ public class EditCarPropertyController {
 			{
 				return false;
 			}
+		}
+
+		@Override
+		public <T> void passSelectedItem(TableViewFillModelInterfance<T> properObject) {
+			selectedItem = (CarTableView) properObject;
+			
 		}
 
 }

@@ -14,10 +14,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.CarTableView;
+import model.ControllerInterface;
 import model.CustomerTableView;
 import model.EditButtonsFromListFunctuality;
 
-public class CustomersListController {
+public class CustomersListController{
 
 		private CustomerTableView customerTableViewModel;
 		@FXML
@@ -47,6 +48,7 @@ public class CustomersListController {
 	    public CustomersListController(CustomerTableView customerTableViewModel)
 	    {
 	    	this.customerTableViewModel=customerTableViewModel;
+	    	
 	    }
 	    
 	    
@@ -56,7 +58,7 @@ public class CustomersListController {
 	    	customerTableViewModel.getObservableList().add(new CustomerTableView("Michal","Karkowski","Gliwice","44-100","Gagarina","22/13",new Button("Edit")));
 	    	for( CustomerTableView customer : customerTableViewModel.getObservableList())
 	    	{
-	    		addListenerToButton(customer.getActionButton());
+	    		EditButtonsFromListFunctuality.addListenerToButton(customer.getActionButton(),"/fxml/EditCustomerProperty.fxml",customerTableViewModel);
 	    	}
 	    	tableView.setItems(customerTableViewModel.getObservableList());
 	    	nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
@@ -69,7 +71,7 @@ public class CustomersListController {
 	    	// DALEJ TUTAJ
 	    }
 	    
-	    public void addListenerToButton(Button button) // JAK zrobic to lepiej ¿eby funkcja byla uniwersalna dla Car i Customer? Propozycja w EditButtonsFrom....()
+/*	    public void addListenerToButton(Button button) // JAK zrobic to lepiej ¿eby funkcja byla uniwersalna dla Car i Customer? Propozycja w EditButtonsFrom....()
 		{
 			button.addEventFilter(MouseEvent.MOUSE_CLICKED, e->{
 	    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EditCustomerProperty.fxml"));
@@ -88,5 +90,5 @@ public class CustomersListController {
 				}
 	    		
 	    	});
-		}
+		}*/
 }

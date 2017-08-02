@@ -12,10 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.CarTableView;
+import model.ControllerInterface;
 import model.CustomerTableView;
 import model.LoggedUser;
 
-public class MainPanelController {
+public class MainPanelController{
 		CarTableView carTableViewModel = new CarTableView();
 		CustomerTableView customerTableViewModel = new CustomerTableView();
 	 	@FXML

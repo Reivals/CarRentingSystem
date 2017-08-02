@@ -12,9 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.ControllerInterface;
 import model.LoggedUser;
 
-public class LogInController {
+public class LogInController{
 	
     @FXML
     private JFXTextField userTextField;

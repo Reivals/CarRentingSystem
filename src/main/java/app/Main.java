@@ -1,14 +1,11 @@
 package app;
 
-import controller.EditCarPropertyController;
 import controller.LogInController;
-import database.ConnectToDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.CarTableView;
 import model.LoggedUser;
 
 public class Main extends Application {
