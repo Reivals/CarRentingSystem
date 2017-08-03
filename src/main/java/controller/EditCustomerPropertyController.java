@@ -2,89 +2,90 @@ package controller;
 
 import com.jfoenix.controls.JFXTextField;
 
+import dialogs.Dialogs;
+import interfaces.ControllerInterface;
+import interfaces.TableViewFillModelInterfance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import model.ControllerInterface;
 import model.CustomerTableView;
-import model.TableViewFillModelInterfance;
+import model.DataValidation;
 
 public class EditCustomerPropertyController implements ControllerInterface{
-	    private CustomerTableView model;
-	    @FXML
-	    private Button acceptButton;
+	private CustomerTableView model;
+	@FXML
+	private Button acceptButton;
 
-	    @FXML
-	    private JFXTextField nameTextField;
+	@FXML
+	private JFXTextField nameTextField;
 
-	    @FXML
-	    private JFXTextField surnameTextField;
+	@FXML
+	private JFXTextField surnameTextField;
 
-	    @FXML
-	    private JFXTextField cityTextField;
+	@FXML
+	private JFXTextField cityTextField;
 
-	    @FXML
-	    private JFXTextField postCodeTextField;
+	@FXML
+	private JFXTextField postCodeTextField;
 
-	    @FXML
-	    private JFXTextField streetTextField;
+	@FXML
+	private JFXTextField streetTextField;
 
-	    @FXML
-	    private JFXTextField localNumberTextField;
-	    
-		private CustomerTableView selectedItem;
+	@FXML
+	private JFXTextField localNumberTextField;
 
-	    
-	    public EditCustomerPropertyController(CustomerTableView model)
-	    {
-	    	this.model = model;
-	    	System.out.println("Kontroller wstrzykniety");
-	    }
+	private CustomerTableView selectedItem;
 
-		public EditCustomerPropertyController() {
-			// TODO Auto-generated constructor stub
+
+	public EditCustomerPropertyController(CustomerTableView model)
+	{
+		this.model = model;
+		System.out.println("Kontroller wstrzykniety");
+	}
+
+	public EditCustomerPropertyController() {
+	}
+	@FXML
+	void acceptButtonClicked(ActionEvent event) {
+		if(DataValidation.validName(nameTextField.getText()) 
+				&& DataValidation.validSurname(surnameTextField.getText()) 
+				&& DataValidation.validCity(cityTextField.getText())
+				&& DataValidation.validPostCode(postCodeTextField.getText()) 
+				&& DataValidation.validLocalNumber(localNumberTextField.getText())
+				&& DataValidation.validStreet(streetTextField.getText())) {
+
+			selectedItem.setName(nameTextField.getText());
+			selectedItem.setSurname(surnameTextField.getText());
+			selectedItem.setCity(cityTextField.getText());
+			selectedItem.setPostCode(postCodeTextField.getText());
+			selectedItem.setStreet(streetTextField.getText());
+			selectedItem.setLocalNumber(localNumberTextField.getText());
+			Button button = (Button)event.getSource();
+			button.getScene().getWindow().hide();
 		}
-		@FXML
-	    void acceptButtonClicked(ActionEvent event) {
-	    	selectedItem.setName(nameTextField.getText());
-	    	selectedItem.setSurname(surnameTextField.getText());
-	    	selectedItem.setCity(cityTextField.getText());
-	    	selectedItem.setPostCode(postCodeTextField.getText());
-	    	selectedItem.setStreet(streetTextField.getText());
-	    	selectedItem.setLocalNumber(localNumberTextField.getText());
-	    	Button button = (Button)event.getSource();
-	    	button.getScene().getWindow().hide();
+		else
+		{
+			System.out.println(localNumberTextField.getText());
+			Dialogs.errorAlert("Apparenty you mistyped some properties\n", "Please correct data");
+		}
 
-	    	
+	}
 
-	    }
-	    @FXML
-	    public void initialize()
-	    {
-	    	if(nameTextField==null)
-	    	{
-	    		System.out.println("1");
-	    	}
-	    	if(selectedItem==null)
-	    	{
-	    		System.out.println("2");
-	    	}
-	    	nameTextField.setText(selectedItem.getName());
-	    	surnameTextField.setText(selectedItem.getSurname());
-	    	cityTextField.setText(selectedItem.getCity());
-	    	postCodeTextField.setText(selectedItem.getPostCode());
-	    	streetTextField.setText(selectedItem.getStreet());
-	    	localNumberTextField.setText(selectedItem.getLocalNumber());
-	    }
-	
-/*	public void passSelectedItem(CustomerTableView customerTableViewItem) {
-		this.selectedItem = customerTableViewItem;
-		
-	}*/
+	@FXML
+	public void initialize()
+	{
+		nameTextField.setText(selectedItem.getName());
+		surnameTextField.setText(selectedItem.getSurname());
+		cityTextField.setText(selectedItem.getCity());
+		postCodeTextField.setText(selectedItem.getPostCode());
+		streetTextField.setText(selectedItem.getStreet());
+		localNumberTextField.setText(selectedItem.getLocalNumber());
+	}
+
 	@Override
 	public <T> void passSelectedItem(TableViewFillModelInterfance<T> properObject) {
 		this.selectedItem = (CustomerTableView) properObject;
-		
+
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 
+import interfaces.ControllerInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.CarTableView;
-import model.ControllerInterface;
 import model.CustomerTableView;
 import model.LoggedUser;
 

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import interfaces.ControllerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +16,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.CarTableView;
-import model.ControllerInterface;
 import model.EditButtonsFromListFunctuality;
 
 public class CarListController{
@@ -53,7 +53,7 @@ public class CarListController{
 	@FXML
     public void initialize()
     {
-		carTableViewModel.getObservableList().addAll(new CarTableView("FIAT","d","12.08.2017",true,true,120,new Button("Edit")),new CarTableView("BMW","d","30.08.2017",true,true,120,new Button("Edit")));
+		carTableViewModel.getObservableList().addAll(new CarTableView("FIAT","d","2017-08-02",true,true,120,new Button("Edit")),new CarTableView("BMW","d","2006-03-01",true,true,120,new Button("Edit")));
     	for(CarTableView car : carTableViewModel.getObservableList()) // iteracja po liscie 
     	{
     		EditButtonsFromListFunctuality.addListenerToButton(car.getActionButton(),"/fxml/EditCarProperty.fxml",carTableViewModel);

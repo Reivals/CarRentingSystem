@@ -1,5 +1,6 @@
 package model;
 
+import interfaces.TableViewFillModelInterfance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;

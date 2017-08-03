@@ -6,6 +6,8 @@ import com.mysql.cj.api.xdevapi.Table;
 
 import controller.EditCarPropertyController;
 import controller.EditCustomerPropertyController;
+import interfaces.ControllerInterface;
+import interfaces.TableViewFillModelInterfance;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

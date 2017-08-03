@@ -12,7 +12,6 @@ public class LoggedUser {
 	   public static LoggedUser getInstance() {
 		      if(instance == null) {
 		         instance = new LoggedUser();
-		         System.out.println("Utworzono nowy obiekt");
 		      }
 		      return instance;
 		   }

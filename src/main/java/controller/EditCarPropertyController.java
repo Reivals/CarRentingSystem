@@ -7,6 +7,9 @@ import java.time.format.DateTimeFormatter;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import dialogs.Dialogs;
+import interfaces.ControllerInterface;
+import interfaces.TableViewFillModelInterfance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.GridPane;
 import model.CarTableView;
-import model.ControllerInterface;
-import model.TableViewFillModelInterfance;
+import model.DataValidation;
 
 public class EditCarPropertyController implements ControllerInterface{
 		CarTableView model;
@@ -34,7 +36,7 @@ public class EditCarPropertyController implements ControllerInterface{
 	    private ChoiceBox<String> availableChoiceBox;
 
 	    @FXML
-	    private JFXDatePicker yearOfProductionDatePicker;
+	    private JFXDatePicker dateOfProduction;
 
 	    @FXML
 	    private JFXTextField brandTextField;
@@ -50,19 +52,28 @@ public class EditCarPropertyController implements ControllerInterface{
 		}
 
 		public EditCarPropertyController(EditCarPropertyController interfaceInstance) {
-			// TODO Auto-generated constructor stub
 		}
 
 		@FXML
 	    void acceptButtonClicked(ActionEvent event) {
+			if(DataValidation.validBrand(brandTextField.getText()) 
+					&& DataValidation.validEngine(engineTextField.getText()) 
+					&& DataValidation.validPower(powerChoiceBox.getText()) 
+					&& DataValidation.validDateOfProduction(dateOfProduction.getValue().toString())) {
 	    	selectedItem.setBrand(brandTextField.getText());
 	    	selectedItem.setEngine(engineTextField.getText());
 	    	selectedItem.setNavi(whichIsSelected(naviChoiceBox));
-	    	selectedItem.setYearOfProduction(yearOfProductionDatePicker.getValue().toString());
+	    	selectedItem.setYearOfProduction(dateOfProduction.getValue().toString());
 	    	selectedItem.setPower(Integer.parseInt(powerChoiceBox.getText()));
 	    	selectedItem.setAvailable(whichIsSelected(availableChoiceBox));
 	    	Button button = (Button)event.getSource();
 	    	button.getScene().getWindow().hide();
+			}
+			else
+			{
+				Dialogs.errorAlert("Apparenty you mistyped some properties\n", "Please correct data");
+			}
+	    	
 
 	    }
 	    
@@ -85,12 +96,12 @@ public class EditCarPropertyController implements ControllerInterface{
 	    }
 	    public void fillData()
 	    {
-	    	DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd.MM.yyyy");
+	    	DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    	LocalDate date = LocalDate.parse(selectedItem.getYearOfProduction(), formatter); 
 	    	brandTextField.setText(selectedItem.getBrand());
 	    	engineTextField.setText(selectedItem.getEngine());
 	    	powerChoiceBox.setText(((Integer)selectedItem.getPower()).toString());
-	    	yearOfProductionDatePicker.setValue(date);
+	    	dateOfProduction.setValue(date);
 	    	availableChoiceBox.getSelectionModel().select(whichToSelect(selectedItem));
 	    	naviChoiceBox.getSelectionModel().select(whichToSelect(selectedItem));
 	    }
@@ -124,5 +135,6 @@ public class EditCarPropertyController implements ControllerInterface{
 			selectedItem = (CarTableView) properObject;
 			
 		}
+
 
 }

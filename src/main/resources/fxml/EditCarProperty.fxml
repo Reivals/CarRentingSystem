@@ -42,7 +42,7 @@
       </Button>
       <ChoiceBox fx:id="naviChoiceBox" prefHeight="31.0" prefWidth="229.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <ChoiceBox fx:id="availableChoiceBox" prefHeight="31.0" prefWidth="218.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <JFXDatePicker fx:id="yearOfProductionDatePicker" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <JFXDatePicker fx:id="dateOfProduction" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <JFXTextField fx:id="brandTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <JFXTextField fx:id="engineTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <JFXTextField fx:id="powerChoiceBox" GridPane.columnIndex="2" GridPane.rowIndex="6" />
