@@ -41,6 +41,13 @@ public class CustomerTableView extends Customer implements TableViewFillModelInt
 		return list;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return getSurname()+", "+getName()+", "+getCity()+", "+getStreet()+", "+getPostCode();
+	}
+	
+	
 	
 
 }

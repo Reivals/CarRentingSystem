@@ -25,6 +25,12 @@ public class CarTableView  extends Car implements TableViewFillModelInterfance{
 		return list;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return brand.get()+", "+engine.get()+", "+power.get();
+	}
+	
 	
 	
 }

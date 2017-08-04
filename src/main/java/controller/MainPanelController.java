@@ -4,21 +4,25 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 
-import interfaces.ControllerInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.CarTableView;
 import model.CustomerTableView;
+import model.DealListView;
 import model.LoggedUser;
 
 public class MainPanelController{
 		CarTableView carTableViewModel = new CarTableView();
 		CustomerTableView customerTableViewModel = new CustomerTableView();
+		DealListView dealListViewModel = new DealListView();
 	 	@FXML
 	    private VBox leftVBox;
 
@@ -45,6 +49,15 @@ public class MainPanelController{
 
 	    @FXML
 	    private AnchorPane rightAnchorPane;
+	    
+	    @FXML
+	    private JFXButton newDealButton;
+
+	    @FXML
+	    private JFXButton newCarButton;
+
+	    @FXML
+	    private JFXButton newCustomerButton;
 
 	    @FXML
 	    void calendarButtonClicked(ActionEvent event) {
@@ -69,7 +82,12 @@ public class MainPanelController{
 	    }
 
 	    @FXML
-	    void dealsButtonClicked(ActionEvent event) {
+	    void dealsButtonClicked(ActionEvent event) throws IOException {
+	    	
+	    	DealListController dealListController = new DealListController(dealListViewModel);
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DealsList.fxml"));
+	    	loader.setController(dealListController);
+	    	rightAnchorPane.getChildren().add(loader.load());
 
 	    }
 	    
@@ -78,5 +96,28 @@ public class MainPanelController{
 	    {
 	    	nameLabel.setText("Name: "+ LoggedUser.getInstance().getLogin());
 	    }
+	    
+	    @FXML
+	    void newCarButtonClicked(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void newCustomerButtonClicked(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void newDealButtonClicked(ActionEvent event) throws IOException {
+	    	AddNewDealFormController addNewDealFormController = new AddNewDealFormController(customerTableViewModel,carTableViewModel,dealListViewModel);
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddNewDealForm.fxml"));
+	    	loader.setController(addNewDealFormController);
+	    	Stage stage = new Stage();
+	    	Scene scene = new Scene((Pane)loader.load());
+	    	stage.setScene(scene);
+	    	stage.show();
+
+	    }
+
 
 }
